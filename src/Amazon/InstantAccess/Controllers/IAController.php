@@ -19,7 +19,7 @@ use Amazon\InstantAccess\Log\Logger;
 use Amazon\InstantAccess\Serialization\InstantAccessRequest;
 use Amazon\InstantAccess\Serialization\InstantAccessResponse;
 use Amazon\InstantAccess\Signature\CredentialStore;
-use Amazon\InstantAccess\Signature\Request;
+use Amazon\InstantAccess\Signature\IARequest;
 use Amazon\InstantAccess\Signature\Signer;
 use Amazon\InstantAccess\Utils\HttpUtils;
 
@@ -29,9 +29,9 @@ use Amazon\InstantAccess\Utils\HttpUtils;
  * This abstract class is extended by the {@link PurchaseController} and {@link AccountLinkingController} in order to
  * implement the Instant Access API. This class should not be used, use the aforementioned classes instead.
  */
-abstract class Controller
+abstract class IAController
 {
-    /** @var Request */
+    /** @var IARequest */
     protected $request;
     /** @var Signer */
     protected $signer;
@@ -65,7 +65,7 @@ abstract class Controller
      *
      * NOTE: This consumes the body of the request which can cause issues when you try and read it again.
      *
-     * @uses Controller::processOperation() to call the correct callback
+     * @uses IAController::processOperation() to call the correct callback
      *
      * @param array $server the $_SERVER array
      * @param string|null $requestBody the path/stream of the body of the request, defaults to php://input
@@ -88,7 +88,7 @@ abstract class Controller
             $body = file_get_contents($requestBody);
 
             // create request object
-            $this->request = new Request($server, $body);
+            $this->request = new IARequest($server, $body);
 
             Logger::getLogger()->debug(sprintf('Request: %s', (string)$this->request));
 

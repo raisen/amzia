@@ -3,7 +3,7 @@ require('../vendor/autoload.php');
 
 use Amazon\InstantAccess\Signature\Credential;
 use Amazon\InstantAccess\Signature\CredentialStore;
-use Amazon\InstantAccess\Signature\Request;
+use Amazon\InstantAccess\Signature\IARequest;
 use Amazon\InstantAccess\Signature\Signer;
 use Amazon\InstantAccess\Utils\DateUtils;
 use Amazon\InstantAccess\Utils\HttpUtils;
@@ -32,7 +32,7 @@ $content = '{
 
 $content = trim(preg_replace('/\s+/', ' ', $content));
 
-$request = new Request($server, $content);
+$request = new IARequest($server, $content);
 
 $credential = new Credential('e2c4905c-83ba-41e7-9c1b-af8014a334cb', '367caa91-cde5-48f2-91fe-bb95f546e9f0');
 

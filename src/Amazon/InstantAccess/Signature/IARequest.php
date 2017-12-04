@@ -24,7 +24,7 @@ use Amazon\InstantAccess\Utils\HttpUtils;
  *
  * This is used for verifying a request's signature.
  */
-class Request
+class IARequest
 {
     /** @var string */
     private $url;

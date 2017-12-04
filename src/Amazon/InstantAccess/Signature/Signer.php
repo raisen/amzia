@@ -19,7 +19,7 @@ use Amazon\InstantAccess\Log\Logger;
 use Amazon\InstantAccess\Signature\AuthorizationHeader;
 use Amazon\InstantAccess\Signature\Credential;
 use Amazon\InstantAccess\Signature\CredentialStore;
-use Amazon\InstantAccess\Signature\Request;
+use Amazon\InstantAccess\Signature\IARequest;
 use Amazon\InstantAccess\Utils\DateUtils;
 use Amazon\InstantAccess\Utils\HttpUtils;
 
@@ -42,10 +42,10 @@ class Signer
     /**
      * Signs the request and adds the authentication headers (Authentication & x-amz-date).
      *
-     * @param Request $request the request to sign.
+     * @param IARequest  $request    the request to sign.
      * @param Credential $credential the credential to use when signing.
      */
-    public function sign(Request $request, Credential $credential)
+    public function sign(IARequest $request, Credential $credential)
     {
         $dateNow = new \DateTime('@' . time());
 
@@ -70,12 +70,12 @@ class Signer
     /**
      * Verifies the request signature against a credential store.
      *
-     * @param Request $request the request to verify.
+     * @param IARequest       $request         the request to verify.
      * @param CredentialStore $credentialStore the credential store used to verify the request.
      *
      * @return boolean returns true if the request validates.
      */
-    public function verify(Request $request, CredentialStore $credentialStore)
+    public function verify(IARequest $request, CredentialStore $credentialStore)
     {
         if (count($credentialStore->getAll()) == 0) {
             throw new \InvalidArgumentException('Empty credential store.');
@@ -164,14 +164,14 @@ class Signer
     /**
      * Returns the autorization header based on the parameters
      *
-     * @param Request $request the request to generate the signature from
+     * @param IARequest  $request    the request to generate the signature from
      * @param Credential $credential the credential to use when signing
-     * @param string $shortDate the date to use to sign in short format
-     * @param string $isoDate the date to use to sign in iso format
+     * @param string     $shortDate  the date to use to sign in short format
+     * @param string     $isoDate    the date to use to sign in iso format
      *
      * @return string a string representation of the authorization header
      */
-    public function getAuthorizationHeader(Request $request, Credential $credential, $shortDate, $isoDate)
+    public function getAuthorizationHeader(IARequest $request, Credential $credential, $shortDate, $isoDate)
     {
         if (!$shortDate || !$isoDate) {
             throw new \InvalidArgumentException('Invalid dates.');
@@ -225,10 +225,11 @@ class Signer
      * 230d8358dc8e8890b4c58deeb62912ee2f20357ae92a5cc861b98e68fe31acb5
      * </pre>
      *
-     * @param Request $request the request to canonicalize.
+     * @param IARequest $request the request to canonicalize.
+     *
      * @return string the canonical request.
      */
-    private function getCanonicalRequest(Request $request)
+    private function getCanonicalRequest(IARequest $request)
     {
         // Method
         $canonicalRequest  = $request->getMethod() . "\n";

@@ -21,7 +21,7 @@ use Amazon\InstantAccess\Serialization\GetUserIdResponse;
 use Amazon\InstantAccess\Signature\AuthorizationHeader;
 use Amazon\InstantAccess\Signature\Credential;
 use Amazon\InstantAccess\Signature\CredentialStore;
-use Amazon\InstantAccess\Signature\Request;
+use Amazon\InstantAccess\Signature\IARequest;
 use Amazon\InstantAccess\Signature\Signer;
 use Amazon\InstantAccess\Utils\DateUtils;
 use Amazon\InstantAccess\Utils\HttpUtils;
@@ -53,7 +53,7 @@ class AccountLinkingControllerTest extends \PHPUnit_Framework_TestCase
 
         $server['HTTP_' . HttpUtils::X_AMZ_DATE_HEADER] = $isoDate;
 
-        $request = new Request($server, $content);
+        $request = new IARequest($server, $content);
 
         $signer = new Signer();
         $signer->sign($request, self::$credential);

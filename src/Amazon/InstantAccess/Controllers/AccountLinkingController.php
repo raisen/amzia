@@ -18,7 +18,7 @@ namespace Amazon\InstantAccess\Controllers;
 use Amazon\InstantAccess\Serialization\Enums\InstantAccessOperationValue;
 use Amazon\InstantAccess\Serialization\GetUserIdRequest;
 use Amazon\InstantAccess\Serialization\GetUserIdResponse;
-use Amazon\InstantAccess\Controllers\Controller;
+use Amazon\InstantAccess\Controllers\IAController;
 
 /**
  * This class is used to implement the Account Linking section of Instant Access API.
@@ -29,7 +29,7 @@ use Amazon\InstantAccess\Controllers\Controller;
  * A callback function must be passed to {@link AccountLinkingController::onGetUserId()}, the callback is
  * called when the {@link Controller::process()} method is invoked.
  */
-class AccountLinkingController extends Controller
+class AccountLinkingController extends IAController
 {
     /** @var \Closure */
     private $getUserIdCallback;

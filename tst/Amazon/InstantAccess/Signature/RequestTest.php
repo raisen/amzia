@@ -31,7 +31,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
 
         $content = '{}';
 
-        $request = new Request($server, $content);
+        $request = new IARequest($server, $content);
 
         $this->assertEquals('http://amazon.com/index.html?a=1', $request->getUrl());
         $this->assertEquals('POST', $request->getMethod());
@@ -50,7 +50,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
         $server['REQUEST_METHOD'] = 'POST';
         $server['HTTP_ACCEPT'] = '*/*';
 
-        $request = new Request($server);
+        $request = new IARequest($server);
 
         $filter = array('host');
 

@@ -39,7 +39,7 @@ class SignerTest extends \PHPUnit_Framework_TestCase
 
         $content = 'body';
 
-        $request = new Request($server, $content);
+        $request = new IARequest($server, $content);
 
         $credential = new Credential('SECRETKEY', 'KEYID');
         $store = new CredentialStore();
@@ -70,7 +70,7 @@ class SignerTest extends \PHPUnit_Framework_TestCase
 
         $content = '{"operation" : "bar"}';
 
-        $request = new Request($server, $content);
+        $request = new IARequest($server, $content);
 
         $credential = new Credential('SECRET', 'PUBLIC');
         $store = new CredentialStore();
@@ -100,7 +100,7 @@ class SignerTest extends \PHPUnit_Framework_TestCase
 
         $content = '{"operation" : "bar"}';
 
-        $request = new Request($server, $content);
+        $request = new IARequest($server, $content);
 
         $signer = new Signer();
         $signer->verify($request, new CredentialStore());
@@ -118,7 +118,7 @@ class SignerTest extends \PHPUnit_Framework_TestCase
 
         $content = 'body';
 
-        $request = new Request($server, $content);
+        $request = new IARequest($server, $content);
 
         $credential = new Credential('SECRETKEY', 'KEYID');
         $store = new CredentialStore();
@@ -144,7 +144,7 @@ class SignerTest extends \PHPUnit_Framework_TestCase
 
         $content = 'body';
 
-        $request = new Request($server, $content);
+        $request = new IARequest($server, $content);
 
         $credential = new Credential('SECRETKEY', 'KEYID');
         $store = new CredentialStore();
@@ -172,7 +172,7 @@ class SignerTest extends \PHPUnit_Framework_TestCase
 
         $content = 'body';
 
-        $request = new Request($server, $content);
+        $request = new IARequest($server, $content);
 
         $credential = new Credential('SECRETKEY', 'KEYID');
         $store = new CredentialStore();
@@ -200,7 +200,7 @@ class SignerTest extends \PHPUnit_Framework_TestCase
 
         $content = 'body';
 
-        $request = new Request($server, $content);
+        $request = new IARequest($server, $content);
 
         $credential = new Credential('SECRETKEY', 'KEYID');
         $store = new CredentialStore();
@@ -228,7 +228,7 @@ class SignerTest extends \PHPUnit_Framework_TestCase
 
         $content = 'body';
 
-        $request = new Request($server, $content);
+        $request = new IARequest($server, $content);
 
         $credential = new Credential('SECRETKEY', 'KEYID');
         $store = new CredentialStore();
@@ -256,7 +256,7 @@ class SignerTest extends \PHPUnit_Framework_TestCase
 
         $content = 'body';
 
-        $request = new Request($server, $content);
+        $request = new IARequest($server, $content);
 
         $credential = new Credential('SECRETKEY', 'KEYID');
         $store = new CredentialStore();
@@ -284,7 +284,7 @@ class SignerTest extends \PHPUnit_Framework_TestCase
 
         $content = 'body';
 
-        $request = new Request($server, $content);
+        $request = new IARequest($server, $content);
 
         $credential = new Credential('SECRETKEY', 'KEYID');
         $store = new CredentialStore();
@@ -310,7 +310,7 @@ class SignerTest extends \PHPUnit_Framework_TestCase
 
         $content = '{"operation" : "bar"}';
 
-        $request = new Request($server, $content);
+        $request = new IARequest($server, $content);
 
         $signer = new Signer();
         $header = $signer->getAuthorizationHeader($request, new Credential('SECRET', 'PUBLIC'), null, null);

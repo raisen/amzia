@@ -20,7 +20,7 @@ use Amazon\InstantAccess\Serialization\FulfillPurchaseRequest;
 use Amazon\InstantAccess\Serialization\RevokePurchaseRequest;
 use Amazon\InstantAccess\Serialization\SubscriptionActivateRequest;
 use Amazon\InstantAccess\Serialization\SubscriptionDeactivateRequest;
-use Amazon\InstantAccess\Controllers\Controller;
+use Amazon\InstantAccess\Controllers\IAController;
 
 /**
  * This class is used to implement the Purchase/Subscription section of Instant Access API.
@@ -37,7 +37,7 @@ use Amazon\InstantAccess\Controllers\Controller;
  * <br/>
  * The callbacks are called when the {@link Controller::process()} method is invoked.
  */
-class PurchaseController extends Controller
+class PurchaseController extends IAController
 {
     /** @var \Closure */
     private $fulfillPurchaseCallback;
