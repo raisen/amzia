@@ -18,6 +18,7 @@ namespace Amazon\InstantAccess\Controllers;
 use Amazon\InstantAccess\Serialization\Enums\InstantAccessOperationValue;
 use Amazon\InstantAccess\Serialization\GetUserIdRequest;
 use Amazon\InstantAccess\Serialization\GetUserIdResponse;
+use Amazon\InstantAccess\Controllers\Controller;
 
 /**
  * This class is used to implement the Account Linking section of Instant Access API.
